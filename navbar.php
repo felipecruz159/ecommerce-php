@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="index.html">
             <span>
-                <?= $name ?>
+               ECOMMERCE PHP
             </span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
                     <a class="nav-link" href="index.php">Início <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.html">
+                    <a class="nav-link" href="shop.php">
                         Shop
                     </a>
                 </li>
