@@ -12,6 +12,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <title>
     Giftos
@@ -96,12 +97,12 @@
                   <td><?= $row['fornecedor_produto'] ?></td>
                   <td><?= $row['qtd_estoque'] ?></td>
                   <td><?= $row['fotos_produto'] ?></td>
-                  <td><a href="edicao_produto.php?id_produto=<?=$row['id_produto']?>">Editar</a>
-                  <a href="exclusao_produto.php?id_produto=<?=$row['id_produto']?>">Deletar</a></td>
+                  <td><a style="text-decoration: none; color: blue;" href="edicao_produto.php?id_produto=<?=$row['id_produto']?>">Editar <i class="bi bi-pencil-square"></i></a><br>
+                  <a   style="text-decoration: none; color: red;" href="exclusao_produto.php?id_produto=<?=$row['id_produto']?>">Deletar <i class="bi bi-trash3"></i></a></td>
                   </tr>
               <?php
                 }
-              }
+              } 
               ?>
           </tbody>
         </table>
