@@ -29,14 +29,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (move_uploaded_file($fotos['tmp_name'], $caminho_destino)) {
                 // Inserção dos dados na tabela produtos
-                $sql = "INSERT INTO produtos (nome_produto, descricao_produto, preco_produto, codigo_barras, fornecedor_produto, qtd_estoque, fotos_produto) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $sql = "UPDATE produtos
+                SET nome_produto = ?,
+                    descricao_produto = ?,
+                    preco_produto = ?,
+                    codigo_barras = ?,
+                    fornecedor_produto = ?,
+                    qtd_estoque = ?,
+                    fotos_produto = ?
+                WHERE id_produto = ?;";
                 $stmt = mysqli_prepare($conexao, $sql);
-                mysqli_stmt_bind_param($stmt, "ssdssis", $nome, $descricao, $preco, $codigo, $fornecedor, $estoque, $caminho_destino);
+                mysqli_stmt_bind_param($stmt, "ssdssisd", $nome, $descricao, $preco, $codigo, $fornecedor, $estoque, $caminho_destino, $_GET['id']);
 
                 if (mysqli_stmt_execute($stmt)) {
-                    $mensagem = '<span style="color:green;">Produto cadastrado com sucesso!</span>';
+                    $mensagem = '<span style="color:green;">Produto editado com sucesso!</span>';
                 } else {
-                    $mensagem = '<span style="color:red;">Erro ao cadastrar o produto: ' . mysqli_error($conexao) . '</span>';
+                    $mensagem = '<span style="color:red;">Erro ao editar o produto: ' . mysqli_error($conexao) . '</span>';
                 }
 
                 // Fechando a conexão

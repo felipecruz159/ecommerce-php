@@ -18,8 +18,7 @@
   </title>
 
   <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
@@ -33,61 +32,7 @@
 <body>
   <div class="hero_area">
     <!-- header section strats -->
-    <header class="header_section">
-      <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
-          <span>
-            Giftos
-          </span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class=""></span>
-        </button>
-
-        <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
-          <ul class="navbar-nav  ">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="shop.html">
-                Shop
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="why.html">
-                Why Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="testimonial.html">
-                Testimonial
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cadastro_produtos.php">Contact Us</a>
-            </li>
-          </ul>
-          <div class="user_option">
-            <a href="">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <span>
-                Login
-              </span>
-            </a>
-            <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a>
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <?php include 'navbar.php'; ?>
     <!-- end header section -->
 
   </div>
@@ -120,29 +65,46 @@
           </div>
         </div> -->
         <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#ID</th>
-      <th scope="col">Nome</t h>
-      <th scope="col">Descrição</th>
-      <th scope="col">Preço</th>
-      <th scope="col">Código</th>
-      <th scope="col">Fornecedor</th>
-      <th scope="col">Quantidade</th>
-      <th scope="col">Foto</th>
-      <th scope="col">Handle</th>
-    </tr> 
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-   
-  </tbody>
-</table>  
+          <thead>
+            <tr>
+              <th scope="col">#ID</th>
+              <th scope="col">Nome</t h>
+              <th scope="col">Descrição</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Código</th>
+              <th scope="col">Fornecedor</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Foto</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <?php
+              require 'config.php';
+              $sql = "SELECT * FROM produtos";
+              $result = $sistema_vendas->query($sql);
+
+              if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+              ?>
+                  <th scope="row"><?= $row['id_produto'] ?></th>
+                  <td><?= $row['nome_produto'] ?></td>
+                  <td><?= $row['descricao_produto'] ?></td>
+                  <td><?= $row['preco_produto'] ?></td>
+                  <td><?= $row['codigo_barras'] ?></td>
+                  <td><?= $row['fornecedor_produto'] ?></td>
+                  <td><?= $row['qtd_estoque'] ?></td>
+                  <td><?= $row['fotos_produto'] ?></td>
+                  <td><a href="edicao_produto.php?id_produto=<?=$row['id_produto']?>">Editar</a>
+                  <a href="exclusao_produto.php?id_produto=<?=$row['id_produto']?>">Deletar</a></td>
+                  </tr>
+              <?php
+                }
+              }
+              ?>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
