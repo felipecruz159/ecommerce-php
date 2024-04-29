@@ -26,6 +26,42 @@
         </div>
     </section>
 
+    <?php
+// Inclua o arquivo de configuração
+// require 'config.php';
+
+// // Verifique se o parâmetro id_produto está definido na URL
+// if(isset($_GET['id_produto'])) {
+//     $id = $_GET['id_produto'];
+
+//     // Consulta SQL para selecionar o produto pelo ID
+//     $sql = "SELECT * FROM produtos WHERE id_produto = '$id'";
+//     $result = $sistema_vendas->query($sql);
+
+//     if ($result->num_rows > 0) {
+//         while ($row = $result->fetch_assoc()) {
+//             // Verifica se o arquivo existe antes de tentar removê-lo
+//             $foto_produto = $row["fotos_produto"];
+//             $caminho_foto = $foto_produto;
+
+//             if (file_exists($caminho_foto)) {
+//                 // Remove o arquivo
+//                 if (unlink($caminho_foto)) {
+//                     echo "A foto '$foto_produto' foi removida com sucesso.<br>";
+//                 } else {
+//                     echo "Erro ao remover a foto '$foto_produto'.<br>";
+//                 }
+//             } else {
+//                 echo "O arquivo '$foto_produto' não existe.<br>";
+//             }
+//         }
+//     } else {
+//         echo "Nenhum produto encontrado com o ID fornecido.";
+//     }
+// } else {
+//     echo "ID do produto não fornecido na URL.";
+// }
+?>
     <!-- Footer section -->
     <footer class="footer_section">
         <div class="container">

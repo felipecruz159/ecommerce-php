@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verifica se todos os campos obrigatórios foram preenchidos
     if (empty($nome) || empty($descricao) || empty($preco) || empty($codigo) || empty($fornecedor) || empty($estoque)) {
-        $mensagem = '<span style="color:red;">Você deve preencher todos os campos obrigatórios!</span>';
+        $mensagem = '<div style="background-color: #FFCCCC; text-align: center; padding: 10px; margin-top: 50px;"><span style="color:red;">Você deve preencher todos os campos obrigatórios!</span></div>';
     } else {
         // Verifica se o campo 'fotos' foi enviado corretamente
         if(isset($_FILES['fotos'])) {
@@ -34,23 +34,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_stmt_bind_param($stmt, "ssdssis", $nome, $descricao, $preco, $codigo, $fornecedor, $estoque, $caminho_destino);
 
                 if (mysqli_stmt_execute($stmt)) {
-                    $mensagem = '<span style="color:green;">Produto cadastrado com sucesso!</span>';
+                    $mensagem = '<div style="background-color: #CCFFCC; text-align: center; padding: 10px; margin-top: 50px;"><span style="color:green;">Produto cadastrado com sucesso!</span></div>';
                 } else {
-                    $mensagem = '<span style="color:red;">Erro ao cadastrar o produto: ' . mysqli_error($conexao) . '</span>';
+                    $mensagem = '<div style="background-color: #FFCCCC; text-align: center; padding: 10px; margin-top: 50px;"><span style="color:red;">Erro ao cadastrar o produto: ' . mysqli_error($conexao) . '</span></div>';
                 }
 
                 // Fechando a conexão
                 mysqli_stmt_close($stmt);
                 mysqli_close($conexao);
             } else {
-                $mensagem = '<span style="color:red;">Erro ao fazer upload da foto!</span>';
+                $mensagem = '<div style="background-color: #FFCCCC; text-align: center; padding: 10px; margin-top: 50px;"><span style="color:red;">Erro ao fazer upload da foto!</span></div>';
             }
         } else {
             // Se o campo 'fotos' não estiver presente no formulário
-            $mensagem = '<span style="color:red;">Você deve selecionar uma foto!</span>';
+            $mensagem = '<div style="background-color: #FFCCCC; text-align: center; padding: 10px; margin-top: 50px;"><span style="color:red;">Você deve selecionar uma foto!</span></div>';
         }
     }
     echo $mensagem;
-    echo '<meta http-equiv="refresh" content="2;url=tabela.php" />';
+    echo '<meta http-equiv="refresh" content="3;url=tabela.php" />';
 }
 ?>
